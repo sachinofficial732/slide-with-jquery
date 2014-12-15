@@ -1,0 +1,203 @@
+add the zar file name as "jquery-1.5.1"
+
+and write the code
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Test4.aspx.vb" Inherits="Test4" %>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script src="js/JavaScript.js"></script>
+<head>
+<script type="text/javascript" src="jquery-1.5.1.js"></script>
+	<script type="text/javascript">
+	    $(function () {
+	        var fade = setInterval("rotateImages()", 3000);
+	        $(".Menuli").hover(function () {
+	            $(this).css('background', '');
+	        }, function () {
+	            $(this).css('background', 'url(Button_background.png) repeat-x');
+	        });
+
+
+	        /* ON MOUSE OVER AT NUMBER SLIDE WILL STOP*/
+	        $("#num1").hover(function () {
+	            clearInterval(fade);
+	            $(".num").removeClass("curr");
+	            $("#rotatingImage1").removeClass();
+	            $("#rotatingImage2").removeClass();
+	            $("#rotatingImage3").removeClass();
+	            $("#rotatingImage4").removeClass();
+	            $("#rotatingImage5").removeClass();
+	            $("#rotatingImage1").addClass("current");
+	            $(this).addClass("curr");
+	        }, function () {
+	            fade = setInterval("rotateImages()", 3000);
+	        });
+	        $("#num2").hover(function () {
+	            clearInterval(fade);
+	            $(".num").removeClass("curr");
+	            $("#rotatingImage1").removeClass();
+	            $("#rotatingImage2").removeClass();
+	            $("#rotatingImage3").removeClass();
+	            $("#rotatingImage4").removeClass();
+	            $("#rotatingImage5").removeClass();
+	            $("#rotatingImage2").addClass("current");
+	            $(this).addClass("curr");
+	        }, function () {
+	            fade = setInterval("rotateImages()", 3000);
+	        });
+
+	        $("#num3").hover(function () {
+	            clearInterval(fade);
+	            $(".num").removeClass("curr");
+	            $("#rotatingImage1").removeClass();
+	            $("#rotatingImage2").removeClass();
+	            $("#rotatingImage3").removeClass();
+	            $("#rotatingImage4").removeClass();
+	            $("#rotatingImage5").removeClass();
+	            $("#rotatingImage3").addClass("current");
+	            $(this).addClass("curr");
+	        }, function () {
+	            fade = setInterval("rotateImages()", 3000);
+	        });
+
+	        $("#num4").hover(function () {
+	            clearInterval(fade);
+	            $(".num").removeClass("curr");
+	            $("#rotatingImage1").removeClass();
+	            $("#rotatingImage2").removeClass();
+	            $("#rotatingImage3").removeClass();
+	            $("#rotatingImage4").removeClass();
+	            $("#rotatingImage5").removeClass();
+	            $("#rotatingImage4").addClass("current");
+	            $(this).addClass("curr");
+	        }, function () {
+	            fade = setInterval("rotateImages()", 3000);
+	        });
+	        $("#num5").hover(function () {
+	            clearInterval(fade);
+	            $(".num").removeClass("curr");
+	            $("#rotatingImage1").removeClass();
+	            $("#rotatingImage2").removeClass();
+	            $("#rotatingImage3").removeClass();
+	            $("#rotatingImage4").removeClass();
+	            $("#rotatingImage5").removeClass();
+	            $("#rotatingImage5").addClass("current");
+	            $(this).addClass("curr");
+	        }, function () {
+	            fade = setInterval("rotateImages()", 3000);
+	        });
+
+
+	    });
+	    function rotateImages() {
+	        var oCurPhoto = $(".ISlideShow div.current");
+	        var oCurNum = $(".Thumbnails div.curr");
+	        var oNxtPhoto = oCurPhoto.next();
+	        var oNxtNum = oCurNum.next();
+	        if (oNxtPhoto.length == 0)
+	            oNxtPhoto = $(".ISlideShow div:eq(0)");
+	        if (oNxtNum.length == 0)
+	            oNxtNum = $(".Thumbnails div:eq(0)");
+	        oCurPhoto.removeClass("current").addClass("previous");
+	        oCurNum.removeClass("curr");
+	        oNxtPhoto.css({ opacity: 0 }).addClass("current").animate({ opacity: 1 }, 1000, function () { oCurPhoto.removeClass("previous"); });
+	        oNxtNum.addClass("curr");
+	    }
+	</script>
+<style type="text/css">
+.ISlideShow div{
+	position:absolute;
+	z-index:0;
+}
+.ISlideShow div.previous{
+	z-index:1;
+}
+.ISlideShow div.current{
+	z-index:2;
+	opacity:1;
+}
+.rotating_SubTtlBack{	
+	top:165px;
+	width: 155px;
+	height: 140px !important;
+	padding-top:10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#rotatingImage1,
+#rotatingImage2,
+#rotatingImage3,
+#rotatingImage4
+
+{
+	cursor: pointer;
+}
+
+
+#rotatingImage1{
+	background: url('boot1.jpg') no-repeat;
+	width: 946px;
+	height: 317px !important; 
+}
+#rotatingImage2{
+	background: url('boot2.jpg') no-repeat;
+	width: 946px;
+	height: 317px !important;
+}
+#rotatingImage3{
+	background: url('boot3.jpg') no-repeat;
+	width: 946px;
+	height: 317px !important;
+}
+#rotatingImage4{
+	background: url('ircig-banner.jpg') no-repeat;
+	width: 946px;
+	height: 317px !important;
+}
+.Thumbnails{
+	position:absolute;
+	z-index:3;
+	padding-left:89.8%;
+}
+.Thumbnails div{
+	float:left;
+	color:white;
+	padding:5px;
+}
+.container{
+	width:946px;
+	position:relative;
+	top:-1px;		
+}
+.num{
+	background:url(a.png) no-repeat;
+	font-size:16px;
+	font-weight:bold;
+}	
+.curr{
+	background:url(b.png) no-repeat;
+}
+#jtchomepage_container{
+	margin-left:-1px;
+}
+</style>
+</head>
+
+<body>
+<div class="container"><div style="WIDTH: 100%" class="ISlideShow">
+<div style="ZOOM: 1" id="rotatingImage1" class="previous">&nbsp;</div>
+<div style="ZOOM: 1" id="rotatingImage2" class="current">&nbsp;</div>
+<div style="ZOOM: 1" id="rotatingImage3">&nbsp;</div>
+<div style="ZOOM: 1" id="rotatingImage4" class="previous">&nbsp;</div></div>
+<div style="HEIGHT: 288px">&nbsp;</div>
+<div class="Thumbnails">
+<div id="num1" class="num">&nbsp;</div>
+<div id="num2" class="num curr">&nbsp;</div>
+<div id="num3" class="num">&nbsp;</div>
+<div id="num4" class="num">&nbsp;</div>
+</div></div>
+</body>
+</html>
